@@ -11,8 +11,8 @@ tags:
 This is the begining of a multiple part series of blog posts going through setting up Elasticsearch cluster in kubernetes.
 
 - Part 1 - Setting up Single Node Elasticsearch
-- [Part 2 - Setting up Kibana Service]({% post_url 2018-02-13-setting-up-elasticsearch-cluster-on-kubernetes-part-2-kibana %})
-- [Part 3 - Kubernetes Configuration Files]({% post_url 2018-02-14-setting-up-elasticsearch-cluster-on-kubernetes-part-3-config-file %})
+- [Part 2 - Setting up Kibana Service](/setting-up-elasticsearch-cluster-on-kubernetes-part-2-kibana/)
+- [Part 3 - Kubernetes Configuration Files](/setting-up-elasticsearch-cluster-on-kubernetes-part-3-config-file/)
 
 The main aim of this series of blog posts will be make notes for myself as I try to learn kubernetes and for anyone in the same position.
 

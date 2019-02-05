@@ -10,9 +10,9 @@ tags:
 
 This is a continuation of the previous blog post.
 
-- [Part 1 - Setting up Single Node Elasticsearch]({% post_url 2018-01-11-setting-up-elasticsearch-cluster-on-kubernetes-part-1 %})
+- [Part 1 - Setting up Single Node Elasticsearch](/setting-up-elasticsearch-cluster-on-kubernetes-part-1/)
 - Part 2 - Setting up Kibana Service
-- [Part 3 - Kubernetes Configuration Files]({% post_url 2018-02-14-setting-up-elasticsearch-cluster-on-kubernetes-part-3-config-file %})
+- [Part 3 - Kubernetes Configuration Files](/setting-up-elasticsearch-cluster-on-kubernetes-part-3-config-file/)
 
 ## Setup Kibana
 
