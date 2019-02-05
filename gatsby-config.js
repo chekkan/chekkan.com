@@ -2,8 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `Chekkan's Blog`,
     author: `Harish Hareendra Babu`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    description: `A blog to explain things to myself and others.`,
+    siteUrl: `https://chekkan.com/`,
     social: {
       twitter: `chekkanz`
     }
@@ -57,13 +57,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Chekkan's Blog`,
+        short_name: `Chekkan`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`
+        icon: `content/assets/blog-icon.png`
       }
     },
     `gatsby-plugin-offline`,
