@@ -1,6 +1,6 @@
 ---
 title: Integration Tests in SharePoint 2010
-date: "2014-03-07T12:01:00.000Z"
+date: "2014-03-07T12:02:00.000Z"
 tags:
   - continuous-integration
   - integration-test
