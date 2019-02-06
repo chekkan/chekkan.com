@@ -31,7 +31,7 @@ Use the `sql_last_value` plugin parameter which will persist the `sql_last_value
 
 Primary key in the oracle db table is used as the document id in elasticsearch. This means that each updated document will correctly override the document in elasticsearch.
 
-```
+```ruby
 output {
   elasticsearch {
     hosts => ${HOST_STRING}
@@ -50,7 +50,7 @@ Make use of filters in order to do basic data transformations.
 
 ### Transform table column value to object
 
-```
+```ruby
 mutate {
     rename => { "address.line1" => "[address][line1]" }
     rename => { "address.line2" => "[address][line2]" }
@@ -59,7 +59,7 @@ mutate {
 
 ### Covert comma delimeted field to array of string
 
-```
+```ruby
 ruby {
     init => "require 'csv'"
     code => "['urls'].each { |type|
@@ -89,9 +89,9 @@ Full re-index is currently a manual process, even though we a script to perform 
 
 ## Further Reading
 
-- [Read][bottled water: real-time integration of postgresql and kafka](https://www.confluent.io/blog/bottled-water-real-time-integration-of-postgresql-and-kafka/)
-- [Watch][change data capture: the magic wand we forgot](https://www.youtube.com/watch?v=ZAZJqEKUl3U)
-- [Read][data pipeline evolution at linkedin on a few pictures](http://getindata.com/data-pipeline-evolution-at-linkedin-on-a-few-pictures)
+- 📖[bottled water: real-time integration of postgresql and kafka](https://www.confluent.io/blog/bottled-water-real-time-integration-of-postgresql-and-kafka/)
+- 📖[data pipeline evolution at linkedin on a few pictures](http://getindata.com/data-pipeline-evolution-at-linkedin-on-a-few-pictures)
+- 🎥[change data capture: the magic wand we forgot](https://www.youtube.com/watch?v=ZAZJqEKUl3U)
 
 _Image credit:_
 
