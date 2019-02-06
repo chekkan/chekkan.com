@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Chekkan's Blog`,
-    author: `Harish Hareendra Babu`,
+    author: `Harish H. Babu`,
     description: `A blog to explain things to myself and others.`,
     siteUrl: `https://chekkan.com/`,
     social: {
