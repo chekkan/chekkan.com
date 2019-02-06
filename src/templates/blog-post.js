@@ -12,7 +12,7 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark;
     const siteTitle = this.props.data.site.siteMetadata.title;
     const { previous, next } = this.props.pageContext;
-    const disqusShortname = "yourdisqusshortname";
+    const disqusShortname = "chekkan";
     const disqusConfig = {
       identifier: post.id,
       title: post.frontmatter.title
