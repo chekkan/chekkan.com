@@ -90,7 +90,7 @@ You can then open the dashboard with command
 minikube addons open dashboard
 ```
 
-![Screen-Shot-2018-01-24-at-15.49.17]({{ "/assets/Screen-Shot-2018-01-24-at-15.49.17.png" | absolute_url }})
+![Screen-Shot-2018-01-24-at-15.49.17](https://res.cloudinary.com/chekkan/image/upload/v1549403332/Screen-Shot-2018-01-24-at-15.49.17_hhfe62.png)
 
 ## Single Node Elasticsearch Cluster
 
