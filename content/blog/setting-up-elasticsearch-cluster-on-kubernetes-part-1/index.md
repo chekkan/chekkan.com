@@ -150,6 +150,7 @@ Now, back in the other window, lets execute a `curl` command to get the response
 ```Shell
 curl http://localhost:8001/api/v1/proxy/namespaces/default/pods/$POD_NAME/
 ```
+> **Update - 18 Feb 2019**: In later version of kubernetes, the proxy url is at http://localhost:8080/api/v1/namespaces/default/pods/$POD_NAME/proxy/
 
 Outputs:
 
