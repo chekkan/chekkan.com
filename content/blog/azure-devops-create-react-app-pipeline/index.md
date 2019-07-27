@@ -58,4 +58,10 @@ steps:
       failIfCoverageEmpty: true
 ```
 
+### Install Node.js task
+
+Even though the `pool` `vmImage` `Ubuntu-16.04` has a version of nodeJS installed already, this task is helpful to make sure the react app build will not start using a newer node version when the vm image updates.
+
+### npm test task
+
 At present with the script `npm test` on its own, the build will just run in watch mode. As the [docs](https://facebook.github.io/create-react-app/docs/running-tests#continuous-integration) at create react app suggests, adding an environment variable `CI` fixes this. This might get fixed in the future.
