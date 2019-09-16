@@ -19,7 +19,7 @@ In order to access response headers such as `Location` in HTTP Fetch api whilst 
      handler: handler.postUsers
      events:
        - http:
-         path: jobs
+         path: users
          method: post
          cors: true
    ```
