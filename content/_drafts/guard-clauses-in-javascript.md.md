@@ -12,9 +12,9 @@ function rating(score) {
 }
 ```
 
-Although at first glance, this function looks simple, it has made a lot of assumption about its input argument. The obvious assumption is that the score is between 1 and 100.  The not so obvious assumpution is that is indeed a number. As javascript is a 
+Although at first glance, this function looks simple, it has made a lot of assumption about its input argument. The obvious assumption is that the score is between 1 and 100.  The not so obvious assumpution is that is indeed a number. As javascript is a non typed language, any client calling this rating function is allowed to pass in score as `"21"` or even `"foo"`.
 
-What should the return value of this function be if the input `score` is a string.
+What should the return value of this function be if the input `score` is a string? 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzc3NDk1ODUyXX0=
+eyJoaXN0b3J5IjpbLTI2Mzk1MzQ2OV19
 -->
