@@ -12,7 +12,9 @@ function rating(score) {
 }
 ```
 
-Although at first glance, this function looks simple, it has made a lot of assumption about its input argument. The obvious assumption is that the score is between 1 and 
+Although at first glance, this function looks simple, it has made a lot of assumption about its input argument. The obvious assumption is that the score is between 1 and 100.  The not so obvious assumpution is that is indeed a number. As javascript is a 
+
+What should the return value of this function be if the input `score` is a string.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2MDUwMzM5M119
+eyJoaXN0b3J5IjpbMzc3NDk1ODUyXX0=
 -->
