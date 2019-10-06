@@ -12,7 +12,7 @@ Although at first glance, this function looks simple, it has made a lot of assum
 
 What should the return value of this function be if the input `score` is a string? Should it return `NaN`? throw an exception? or return `-1`? 
 
-It may be that in the context where this function is beign used, it will never get into the erronous state I've listed above. For example, `rating(toPercentage(score, 1, 100))`
+It may be that in the context where this function is beign used, it will never get into the erronous state I've listed above. For example, `rating(toPercentage(score, 1, 10))`. Lets assume that `toPercentage` is returning a percentage given a score between `1` and `10`. So, in this context we can see that rating is actually coverting
 
 How about writting these assumptions down?
 
@@ -56,6 +56,6 @@ function rating(score) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1MDk3OTExMiwxMDQ1OTk0MjYyLC0xNT
+eyJoaXN0b3J5IjpbLTU4MDM0OTkxNSwxMDQ1OTk0MjYyLC0xNT
 AyNDA5OTM2LDg0NzcyNTksLTI2Mzk1MzQ2OV19
 -->
