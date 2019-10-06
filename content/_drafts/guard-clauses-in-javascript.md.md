@@ -25,7 +25,7 @@ function rating(score) {
 }
 ```
 
-This is documented in the Reactoring book by Martin Fowler and he calls this refactoring "Introduce Assertion". This seems a bit verbose and the lines of code has gone from 1 to 4.
+This is starting to look a lot like defensive programming. This is documented in the Reactoring book by Martin Fowler and he calls this refactoring "Introduce Assertion". This seems a bit verbose and the lines of code has gone from 1 to 4.
 
 ```javascript
 function rating(score) {
@@ -56,6 +56,6 @@ function rating(score) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0NTk5NDI2MiwtMTUwMjQwOTkzNiw4ND
-c3MjU5LC0yNjM5NTM0NjldfQ==
+eyJoaXN0b3J5IjpbLTIwNDUxMTI1NjUsMTA0NTk5NDI2MiwtMT
+UwMjQwOTkzNiw4NDc3MjU5LC0yNjM5NTM0NjldfQ==
 -->
