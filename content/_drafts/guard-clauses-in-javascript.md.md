@@ -18,9 +18,10 @@ What should the return value of this function be if the input `score` is a strin
 
 ```javascript
 function rating(score) {
+	console.assert(score >= 1 && score <= 100, "expected 1 >= `score` <= 100");
 	return Math.ceil(score / 20);
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0NjQ5MTYzNiwtMjYzOTUzNDY5XX0=
+eyJoaXN0b3J5IjpbLTIwOTM1NTU1MjMsLTI2Mzk1MzQ2OV19
 -->
