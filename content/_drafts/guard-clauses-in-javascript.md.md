@@ -47,9 +47,9 @@ function isBetween(lower, upper, name, value) {
 ```
 
 ## Conclusion
-Even though defensive coding can get verbose, the benefits of doing so can help diagnose an error easily. I have seen this kind of coding in C#, I have not ran into it in Javascript code bases. Given the untyped nature of the language, it seems log
+Even though defensive coding can get verbose, the benefits of doing so can help diagnose an error easily. I have seen this kind of coding in C#, I have not ran into it in Javascript code bases. Given the untyped nature of the language, it seems logical to start writing code this way. The `isBetween` assertion function is written to make it easier to understand. Using libraries such as rambda, help compose the `isBetween` function and 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA3MTUwMTczLDEwNzM1MTgyMzksLTEzMz
-U5NTM5MDYsLTEzODEwNjMxNjUsMTA0NTk5NDI2MiwtMTUwMjQw
-OTkzNiw4NDc3MjU5LC0yNjM5NTM0NjldfQ==
+eyJoaXN0b3J5IjpbLTI5ODQ5NzM3MSwxMDczNTE4MjM5LC0xMz
+M1OTUzOTA2LC0xMzgxMDYzMTY1LDEwNDU5OTQyNjIsLTE1MDI0
+MDk5MzYsODQ3NzI1OSwtMjYzOTUzNDY5XX0=
 -->
