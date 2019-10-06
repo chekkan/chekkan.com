@@ -1,9 +1,5 @@
 # Guard assertions in Javascript
 
-One of the refactoring in the book Refactoring second edition by Martin Fowler is "[Introduce Assertions](https://refactoring.com/catalog/introduceAssertion.html)".
-
-I have not seen many example of this beign used in the Javascript code bases. 
-
 Suppose a function that look a score of some sort existed and returned a rating out of 5.
 
 ```javascript
@@ -25,7 +21,7 @@ function rating(score) {
 }
 ```
 
-This is starting to look a lot like defensive programming. This is documented in the Reactoring book by Martin Fowler and he calls this refactoring "Introduce Assertion". This seems a bit verbose and the lines of code has gone from 1 to 4.
+This is starting to look a lot like [defensive programming](https://en.wikipedia.org/wiki/Defensive_programming). It states that "a method should always validate its input". This is documented in the Reactoring book by Martin Fowler and he calls this refactoring "Introduce Assertion". This seems a bit verbose and the lines of code has gone from 1 to 4.
 
 ```javascript
 function rating(score) {
@@ -56,6 +52,6 @@ function rating(score) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDUxMTI1NjUsMTA0NTk5NDI2MiwtMT
-UwMjQwOTkzNiw4NDc3MjU5LC0yNjM5NTM0NjldfQ==
+eyJoaXN0b3J5IjpbNjgzMDc0MzksMTA0NTk5NDI2MiwtMTUwMj
+QwOTkzNiw4NDc3MjU5LC0yNjM5NTM0NjldfQ==
 -->
