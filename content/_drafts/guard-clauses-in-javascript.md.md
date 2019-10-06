@@ -29,7 +29,7 @@ This is documented in the Reactoring book by Martin Fowler and he calls this ref
 
 ```javascript
 function rating(score) {
-	assert.isBetween(1, 100, "score");
+	assert.isBetween(1, 100, "score", score);
 	return Math.ceil(score / 20);
 }
 ```
@@ -37,13 +37,13 @@ function rating(score) {
 In this variantion, `assert.isBetween` function can handle the assertion of the score beign `undefined` or `null`, also ensuring the type beign a number and finally the acceptable range. 
 
 ```javascript
-function isBetween(lower, upper, name) {
-	console.assert(not(isNil), `expected ${name} to be not null or undefined`);
-	console.assert(Number.isFinite(score), `expected ${name} to be a valid number`);
-	console.assert(
+function isBetween(lower, upper, name, value) {
+	console.assert(not(isNil(value)), `expected ${name} to be not null or undefined`);
+	console.assert(Number.isFinite(value), `expected ${name} to be a valid number, but was ${value}.`);
+	console.assert(value >= lower && value <= upper, `expected ${name} to be between ${lower} and ${upper}.
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTUyNzc4MTYsODQ3NzI1OSwtMjYzOT
+eyJoaXN0b3J5IjpbLTE4MjM3Mzg0ODEsODQ3NzI1OSwtMjYzOT
 UzNDY5XX0=
 -->
