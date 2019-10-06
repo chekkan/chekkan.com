@@ -14,7 +14,13 @@ function rating(score) {
 
 Although at first glance, this function looks simple, it has made a lot of assumption about its input argument. The obvious assumption is that the score is between 1 and 100.  The not so obvious assumpution is that it is indeed a number. As javascript is an un-typed language, any client calling this rating function is allowed to pass in score as `"21"` or even `"foo"`.
 
-What should the return value of this function be if the input `score` is a string? Should it return `NaN`? throw an exception? or return `-
+What should the return value of this function be if the input `score` is a string? Should it return `NaN`? throw an exception? or return `-1`? How about writting these assumptions down?
+
+```javascript
+function rating(score) {
+	return Math.ceil(score / 20);
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzQ3Njk5OTY4LC0yNjM5NTM0NjldfQ==
+eyJoaXN0b3J5IjpbLTg0NjQ5MTYzNiwtMjYzOTUzNDY5XX0=
 -->
