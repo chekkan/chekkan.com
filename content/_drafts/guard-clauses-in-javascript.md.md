@@ -38,12 +38,12 @@ In this variantion, `assert.isBetween` function can handle the assertion of the 
 
 ```javascript
 function isBetween(lower, upper, name) {
-	if (not(isNil)) {
-		console.assert(
-	}
+	console.assert(not(isNil), `expected ${name} to be not null or undefined`);
+	console.assert(Number.isFinite(score), `expected ${name} to be a valid number`);
+	console.assert(
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxNDkyMjczMiw4NDc3MjU5LC0yNjM5NT
-M0NjldfQ==
+eyJoaXN0b3J5IjpbLTExMTUyNzc4MTYsODQ3NzI1OSwtMjYzOT
+UzNDY5XX0=
 -->
