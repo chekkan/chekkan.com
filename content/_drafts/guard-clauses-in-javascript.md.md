@@ -27,7 +27,7 @@ function rating(score) {
 }
 ```
 
-This is starting to look a lot like [defensive programming](https://en.wikipedia.org/wiki/Defensive_programming). It states that "a method should always validate its input". This is documented in the _Reactoring_ book by Martin Fowler and he calls this refactoring "[Introduce Assertions](https://refactoring.com/catalog/introduceAssertion.html)". This seems a bit verbose and the lines of code has gone from 1 to 4.
+This is starting to look a lot like [defensive programming](https://en.wikipedia.org/wiki/Defensive_programming). It states that "a method should always validate its input". This is documented in the _Refactoring_ book by Martin Fowler and he calls this refactoring "[Introduce Assertions](https://refactoring.com/catalog/introduceAssertion.html)". This seems a bit verbose and the lines of code has gone from 1 to 4.
 
 ```javascript
 function rating(score) {
@@ -36,8 +36,7 @@ function rating(score) {
 }
 ```
 
-In this variantion, `assert.isBetween` function can handle the assertion of the score beign `undefined` or `null`, also ensuring the type beign a number and finally in the acceptable range. 
-In this variation, `assert.isBetween` function can handle the assertion of the score being `undefined` or null. Also ensuring the type being a number and finally in the acceptable range.
+In this variation, `assert.isBetween` function can handle the score being `undefined` or `null`.  Also ensuring the type being a number and finally in the acceptable range.
 
 ```javascript
 function isBetween(lower, upper, name, value) {
@@ -51,7 +50,8 @@ function isBetween(lower, upper, name, value) {
 ## Conclusion
 Even though defensive coding can get verbose, the benefits of doing so can help diagnose errors. I have seen this kind of coding in C#, I have not run into it in Javascript codebases. Given the untyped nature of the language, it seems logical to start writing code this way. The `isBetween` assertion function is verbose to make it easier to understand. Using a library such as [ramdajs](http://ramdajs.com/), can help compose the `isBetween` function, shortening it.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQ4ODc2ODczLDE5MTgwMjQ0NDQsMTA3Mz
-UxODIzOSwtMTMzNTk1MzkwNiwtMTM4MTA2MzE2NSwxMDQ1OTk0
-MjYyLC0xNTAyNDA5OTM2LDg0NzcyNTksLTI2Mzk1MzQ2OV19
+eyJoaXN0b3J5IjpbMTI1MDU5MzU5OCwxOTE4MDI0NDQ0LDEwNz
+M1MTgyMzksLTEzMzU5NTM5MDYsLTEzODEwNjMxNjUsMTA0NTk5
+NDI2MiwtMTUwMjQwOTkzNiw4NDc3MjU5LC0yNjM5NTM0NjldfQ
+==
 -->
