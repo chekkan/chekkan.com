@@ -18,13 +18,15 @@ What should the return value of this function be if the input `score` is a strin
 
 ```javascript
 function rating(score) {
-
-	console.assert(Number.isFinite(score), "expected score to be a valid number")
+	console.assert(not(isNil(score)), "expected score to be not null or undefined");
+	console.assert(Number.isFinite(score), "expected score to be a valid number");
 	console.assert(score >= 1 && score <= 100, "expected score to be between 1 and 100");
 	return Math.ceil(score / 20);
 }
 ```
+
+This is documented in the Reactoring book by Martin Fowler and he calls this refactoring "Introduce Assertio
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzkxMTk1OTMzLDg0NzcyNTksLTI2Mzk1Mz
-Q2OV19
+eyJoaXN0b3J5IjpbLTQ4NDgxMzQ4OCw4NDc3MjU5LC0yNjM5NT
+M0NjldfQ==
 -->
