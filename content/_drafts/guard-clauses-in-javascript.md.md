@@ -37,6 +37,7 @@ function rating(score) {
 ```
 
 In this variantion, `assert.isBetween` function can handle the assertion of the score beign `undefined` or `null`, also ensuring the type beign a number and finally in the acceptable range. 
+In this variation, `assert.isBetween` function can handle the assertion of the score being `undefined` or null. Also ensuring the type being a number and finally in the acceptable range.
 
 ```javascript
 function isBetween(lower, upper, name, value) {
@@ -48,9 +49,9 @@ function isBetween(lower, upper, name, value) {
 ```
 
 ## Conclusion
-Even though defensive coding can get verbose, the benefits of doing so can help diagnose an error easily. I have seen this kind of coding in C#, I have not ran into it in Javascript code bases. Given the untyped nature of the language, it seems logical to start writing code this way. The `isBetween` assertion function is written to make it easier to understand. Using a library such as rambda, can help compose the `isBetween` function and make the number of lines shorter.
+Even though defensive coding can get verbose, the benefits of doing so can help diagnose errors. I have seen this kind of coding in C#, I have not run into it in Javascript codebases. Given the untyped nature of the language, it seems logical to start writing code this way. The `isBetween` assertion function is verbose to make it easier to understand. Using a library such as [ramdajs](http://ramdajs.com/), can help compose the `isBetween` function, shortening it.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxODAyNDQ0NCwxMDczNTE4MjM5LC0xMz
-M1OTUzOTA2LC0xMzgxMDYzMTY1LDEwNDU5OTQyNjIsLTE1MDI0
-MDk5MzYsODQ3NzI1OSwtMjYzOTUzNDY5XX0=
+eyJoaXN0b3J5IjpbNzQ4ODc2ODczLDE5MTgwMjQ0NDQsMTA3Mz
+UxODIzOSwtMTMzNTk1MzkwNiwtMTM4MTA2MzE2NSwxMDQ1OTk0
+MjYyLC0xNTAyNDA5OTM2LDg0NzcyNTksLTI2Mzk1MzQ2OV19
 -->
