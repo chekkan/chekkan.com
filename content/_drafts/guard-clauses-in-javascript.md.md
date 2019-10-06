@@ -20,7 +20,7 @@ How about writting these assumptions down?
 
 ```javascript
 function rating(score) {
-	console.assert(not(isNil(score)), "expected score to be not null or undefined");
+	console.assert(score !== null || score !== undefined), "expected score to be not null or undefined");
 	console.assert(Number.isFinite(score), "expected score to be a valid number");
 	console.assert(score >= 1 && score <= 100, "expected score to be between 1 and 100");
 	return Math.ceil(score / 20);
@@ -40,16 +40,16 @@ In this variantion, `assert.isBetween` function can handle the assertion of the 
 
 ```javascript
 function isBetween(lower, upper, name, value) {
-	console.assert(not(isNil(value)), `expected ${name} to be not null or undefined`);
+	console.assert(score !== null || score !== undefined), `expected ${name} to be not null or undefined`);
 	console.assert(Number.isFinite(value), `expected ${name} to be a valid number, but was ${value}.`);
 	console.assert(value >= lower && value <= upper, `expected ${name} to be between ${lower} and ${upper}.`);
 }
 ```
 
 ## Conclusion
-Even though defensive coding can get verbose, the benefits of doing so can help diagnose an error easily. I have seen 
+Even though defensive coding can get verbose, the benefits of doing so can help diagnose an error easily. I have seen this kind of coding in C#, I have not ran into it 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyODU0Mjg4OSwxMDczNTE4MjM5LC0xMz
+eyJoaXN0b3J5IjpbMTI2MjM0MDc2MCwxMDczNTE4MjM5LC0xMz
 M1OTUzOTA2LC0xMzgxMDYzMTY1LDEwNDU5OTQyNjIsLTE1MDI0
 MDk5MzYsODQ3NzI1OSwtMjYzOTUzNDY5XX0=
 -->
