@@ -12,11 +12,9 @@ Although at first glance, this function looks simple, it has made a lot of assum
 
 What should the return value of this function be if the input `score` is a string? Should it return `NaN`? throw an exception? or return `-1`? 
 
-It may be that in the context where this function is beign used, it will never get into the erroneous state I've listed above. For example, `rating(toPercentage(score, 1, 10))`. Lets assume that `toPercentage` is returning a percentage given a score between 1 and 10. So, in this context we can see that the function `rating` is actually beign used to covert a score from 1 to 10 to 1 to 5. Perhaps, `toPercentage` handles the case when the initial score variable is not a number between 1, to 10 (by capping the value), or the case when score is a string returning 0 etc. We don't know without looking in the source code of the function. The `toPercentage` function could even be provided by an `npm` package maintained by a different team, whom you don't trust to do the right thing. Who knows, they might start returning you percentage as a string in later versions. This has happened to me in a project where the score was returned by an API call and it went from being a `number` to being a `string`.
+It may be that in the context where this function is being used, it will never get into the erroneous state. For example, `rating(toPercentage(score, 1, 10))`. Let's assume that `toPercentage` is returning a percentage given a score between 1 and 10. So, in this context, we can see that the function `rating` is actually used to covert a score from 1 to 10 to 1 to 5. Perhaps, `toPercentage` handles the case when the initial score variable is not a number between 1, to 10 (by capping the value), or the case when the score is a string returning 0 etc. We don’t know without looking in the source code of the function. The `toPercentage` function could've been provided by an `npm` package maintained by a different team. Who knows, they might start returning you a percentage as a string in later versions. This has happened to me in a project where the score was returned by an API call. And went from being a `number` to being a `string`.
 
 How would you know if the `score` variable starts behaving differently to when you wrote the `rating` method? How can we catch this in production and make fixing it easier.
-
-It may be that in the context where this function is being used, it will never get into the erroneous state. For example, rating(toPercentage(score, 1, 10)). Let's assume that toPercentage is returning a percentage given a score between 1 and 10. So, in this context, we can see that the function rating is actually used to covert a score from 1 to 10 to 1 to 5. Perhaps, toPercentage handles the case when the initial score variable is not a number between 1, to 10 (by capping the value), or the case when the score is a string returning 0 etc. We don’t know without looking in the source code of the function. The toPercentage function could've been provided by an npm package maintained by a different team. Who knows, they might start returning you a percentage as a string in later versions. This has happened to me in a project where the score was returned by an API call. And went from being a number to being a string.
 
 How about writting these assumptions down?
 
@@ -52,7 +50,7 @@ function isBetween(lower, upper, name, value) {
 ## Conclusion
 Even though defensive coding can get verbose, the benefits of doing so can help diagnose errors. I have seen this kind of coding in C#, I have not run into it in Javascript codebases. Given the untyped nature of the language, it seems logical to start writing code this way. The `isBetween` assertion function is verbose to make it easier to understand. Using a library such as [ramdajs](http://ramdajs.com/), can help compose the `isBetween` function, shortening it.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExMTkwMDcxMywxOTE4MDI0NDQ0LDEwNz
+eyJoaXN0b3J5IjpbLTkwMzM4NTI3NSwxOTE4MDI0NDQ0LDEwNz
 M1MTgyMzksLTEzMzU5NTM5MDYsLTEzODEwNjMxNjUsMTA0NTk5
 NDI2MiwtMTUwMjQwOTkzNiw4NDc3MjU5LC0yNjM5NTM0NjldfQ
 ==
