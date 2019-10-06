@@ -21,19 +21,19 @@ Issue specific to SharePoint apps hosted in Office 365 is that you cannot predic
 
 One easy fix is to save the name of the server into database when the app is installed. This can be achieved by the use of app event receivers. I am sure that you can have a SharePoint Hosted App which talks to a remote service for event receivers. But, when you add App Installation Handler to a SharePoint Hosted App, Visual Studio creates a new project for you and changes the appmanifest to say AutoHosted App.
 
-![New web project on handle event Dialog Box](http://chekkanz.files.wordpress.com/2014/06/create-new-project-dialog.png)
+![New web project on handle event Dialog Box](https://res.cloudinary.com/chekkan/image/upload/v1570362485/create-new-project-dialog_dyidb6.png)
 
 An empty web project is added to the solution. Notice that the Hosting type value changed to say `Autohosted`.
 
-![SharePoint Provider Hosted Project in Visual Studio](http://chekkanz.files.wordpress.com/2014/06/new-web-project.png)
+![SharePoint Provider Hosted Project in Visual Studio](https://res.cloudinary.com/chekkan/image/upload/v1570362485/new-web-project_awg9br.png)
 
-![Hosted type input box](http://chekkanz.files.wordpress.com/2014/06/hosting-type.png)
+![Hosted type input box](https://res.cloudinary.com/chekkan/image/upload/v1570362485/hosting-type_xer4ai.png)
 
 I believe, if you would like to keep your SharePoint App as SharePoint hosted, simply replace the `~remoteAppUrl` part of the value for `Properties/InstalledEventEndpoint` in your `appmanifest.xml` to point to your actual service project.
 
 To save the app web host URL to the database, open the project property window for your SharePoint project and set the values for Handle App Installed and Handle App Uninstalled to True.
 
-![SharePoint App Project Properties Window](http://chekkanz.files.wordpress.com/2014/06/spproject-properties.png)
+![SharePoint App Project Properties Window](https://res.cloudinary.com/chekkan/image/upload/v1570362485/spproject-properties_juutfq.png)
 
 Make sure you have a Azure Service Bus namespace created and you copy the connection string to SharePoint project Properties Window / SharePoint tab / Service Bus Connection String text area. I am not sure why you need this. If you don't, when the installation completes, you get an error which says `there is no end point listening at localhost:4563/Services/AppEventReceiver.svc`
 

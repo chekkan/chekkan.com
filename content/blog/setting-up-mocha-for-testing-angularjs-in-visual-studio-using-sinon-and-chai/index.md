@@ -23,7 +23,7 @@ curl http://npmjs.org/install.sh | sh
 
 I prefer downloading each file manually from the links above. If you want to install it using `npm`, the command to install using node package manager is `npm install --save mocha sinon chai sinon-chai`. This will download the libraries needed into the `node_modules` folder.
 
-![AngularJsForDotNet_PostNpmInstall](http://chekkanz.files.wordpress.com/2014/03/angularjsfordotnet_postnpminstall.png)
+![AngularJsForDotNet_PostNpmInstall](https://res.cloudinary.com/chekkan/image/upload/v1570362257/angularjsfordotnet_postnpminstall_osa3ag.png)
 
 Then you can add the files mocha.js, sinon.js, chai.js, and sinon-chai.js from the node_modules folder into your test project. Beware that if you want stubs and spy methods, you will have to include the `sinon/libs/stub.js` etc files. you can get the html runner template from `mocha/template.html`. The code is given below.
 
@@ -31,7 +31,7 @@ To add client side test into you solution as a separate project, follow these st
 Open you asp.net mvc project, and create a new project in your solution by selecting an Empty Project Template and name it something like `"{{SolutionName}}.ClientSideTests"`.
 I like to keep all of my test projects in a folder called `"Tests"`.
 
-![AngularJsForDotNet_FolderStructure](http://chekkanz.files.wordpress.com/2014/03/angularjsfordotnet_folderstructure.png)
+![AngularJsForDotNet_FolderStructure](https://res.cloudinary.com/chekkan/image/upload/v1570362257/angularjsfordotnet_folderstructure_gtipeh.png)
 
 Download each of the files from these locations: [mocha](https://github.com/visionmedia/mocha/releases), [sinon](http://sinonjs.org/), [chai](http://chaijs.com/chai.js), and [sinon-chair](https://github.com/domenic/sinon-chai/releases).
 
@@ -120,8 +120,8 @@ describe("homeCtrl", function() {
 ```
 
 Your solution structure should look like the following screenshot
-![AngularJsForDotNet_SolutionStructure](http://chekkanz.files.wordpress.com/2014/03/angularjsfordotnet_solutionstructure.png)
+![AngularJsForDotNet_SolutionStructure](https://res.cloudinary.com/chekkan/image/upload/v1570362257/angularjsfordotnet_solutionstructure_ladz4c.png)
 
 And finally right click _testrunner.html_ file and choose "View in Browser". and watch your first test pass.
 
-![AngularJsForDotNet_PassingTest](http://chekkanz.files.wordpress.com/2014/03/angularjsfordotnet_passingtest.png)
+![AngularJsForDotNet_PassingTest](https://res.cloudinary.com/chekkan/image/upload/v1570362257/angularjsfordotnet_passingtest_qdbci8.png)

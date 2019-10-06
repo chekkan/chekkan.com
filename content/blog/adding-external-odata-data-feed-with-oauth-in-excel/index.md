@@ -42,7 +42,7 @@ Date: Wed, 11 Feb 2015 16:50:19 GMT
 ```
 
 I did not get further by using the Power Pivot -> Add Data Feed option. However, by adding an existing connection using the 'Data Tab', I was able to use the connection string above to retrieve the data back.
-![Add existing connection data tab in excel](http://s21.postimg.org/khqrdjwsn/excel_data_add_existing_connections.png)
+![Add existing connection data tab in excel](https://res.cloudinary.com/chekkan/image/upload/v1570362834/excel_data_add_existing_connections_xxviaj.png)
 
 If an `Authentication Token` value is provided, excel retries the data source with `Authentication Token` added into the HTTP Header `WWW-Authenticate`. If the `Authentication Token` is null or empty, `DataFeedClient` tries to retrieve an access token by posting a request to `Refresh URL` together with the `Refresh Token`.
 
