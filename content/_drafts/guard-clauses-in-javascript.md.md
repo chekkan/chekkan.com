@@ -12,7 +12,7 @@ Although at first glance, this function looks simple, it has made a lot of assum
 
 What should the return value of this function be if the input `score` is a string? Should it return `NaN`? throw an exception? or return `-1`? 
 
-It may be that in the context where this function is beign used, it will never get into the erronous state I've listed above. For example, `rating(toPercentage(score, 1, 10))`. Lets assume that `toPercentage` is returning a percentage given a score between `1` and `10`. So, in this context we can see that the function `rating` is actually beign used to covert a score from 1 to 10 to 1 to 5. Perhaps, `toPercentage` handles the case when the initial score variable is not a finite 
+It may be that in the context where this function is beign used, it will never get into the erronous state I've listed above. For example, `rating(toPercentage(score, 1, 10))`. Lets assume that `toPercentage` is returning a percentage given a score between `1` and `10`. So, in this context we can see that the function `rating` is actually beign used to covert a score from 1 to 10 to 1 to 5. Perhaps, `toPercentage` handles the case when the initial score variable is not a number between 1, to 10 (by capping the value), or the case when score is a string returning 0 etc. We don't know without looking in the source code of the function. the `toPercentage` function could even be provided by an npm package.
 
 How about writting these assumptions down?
 
@@ -56,6 +56,6 @@ function rating(score) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTMxMzc2ODEzLDEwNDU5OTQyNjIsLTE1MD
+eyJoaXN0b3J5IjpbOTgzMTk4ODMwLDEwNDU5OTQyNjIsLTE1MD
 I0MDk5MzYsODQ3NzI1OSwtMjYzOTUzNDY5XX0=
 -->
