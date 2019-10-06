@@ -46,9 +46,10 @@ function isBetween(lower, upper, name, value) {
 }
 ```
 
-Conclusion
+## Conclusion
+Even though defensive coding can get verbose, the benefits of doing so can help diagnose an error easily. I have seen 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDEyNDM3MDc3LDEwNzM1MTgyMzksLTEzMz
-U5NTM5MDYsLTEzODEwNjMxNjUsMTA0NTk5NDI2MiwtMTUwMjQw
-OTkzNiw4NDc3MjU5LC0yNjM5NTM0NjldfQ==
+eyJoaXN0b3J5IjpbLTkyODU0Mjg4OSwxMDczNTE4MjM5LC0xMz
+M1OTUzOTA2LC0xMzgxMDYzMTY1LDEwNDU5OTQyNjIsLTE1MDI0
+MDk5MzYsODQ3NzI1OSwtMjYzOTUzNDY5XX0=
 -->
