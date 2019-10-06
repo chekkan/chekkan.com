@@ -46,18 +46,8 @@ function isBetween(lower, upper, name, value) {
 }
 ```
 
-If a more granular control is requires, we could compose these functions together...
-
-```javascript
-function rating(score) {
-	const ensure = 
-	assert.notNil("score", score) && 
-	assert.isFinite("score", score) &&
-	assert.isBetween(1, 100, "score", score);
-	return Math.ceil(score / 20);
-}
-```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzODEwNjMxNjUsMTA0NTk5NDI2MiwtMT
-UwMjQwOTkzNiw4NDc3MjU5LC0yNjM5NTM0NjldfQ==
+eyJoaXN0b3J5IjpbLTEzMzU5NTM5MDYsLTEzODEwNjMxNjUsMT
+A0NTk5NDI2MiwtMTUwMjQwOTkzNiw4NDc3MjU5LC0yNjM5NTM0
+NjldfQ==
 -->
