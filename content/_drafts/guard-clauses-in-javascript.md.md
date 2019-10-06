@@ -40,10 +40,17 @@ In this variantion, `assert.isBetween` function can handle the assertion of the 
 function isBetween(lower, upper, name, value) {
 	console.assert(not(isNil(value)), `expected ${name} to be not null or undefined`);
 	console.assert(Number.isFinite(value), `expected ${name} to be a valid number, but was ${value}.`);
-	console.assert(value >= lower && value <= upper, `expected ${name} to be between ${lower} and ${upper}.
+	console.assert(value >= lower && value <= upper, `expected ${name} to be between ${lower} and ${upper}.`);
 }
 ```
+
+If a more granular control is requires, we could compose these functions together...
+
+```javascript
+function rating(score) {
+	assert.notNil( &&
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjM3Mzg0ODEsODQ3NzI1OSwtMjYzOT
+eyJoaXN0b3J5IjpbLTE4NzE4MzMwMzgsODQ3NzI1OSwtMjYzOT
 UzNDY5XX0=
 -->
