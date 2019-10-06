@@ -18,10 +18,11 @@ What should the return value of this function be if the input `score` is a strin
 
 ```javascript
 function rating(score) {
-	console.assert(score >= 1 && score <= 100, "expected 1 >= `score` <= 100");
+	console.assert(Number.isFinite(score), "expected
+	console.assert(score >= 1 && score <= 100, "expected score to be between 1 and 100");
 	return Math.ceil(score / 20);
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTM1NTU1MjMsLTI2Mzk1MzQ2OV19
+eyJoaXN0b3J5IjpbOTI5MTAyNzE2LC0yNjM5NTM0NjldfQ==
 -->
