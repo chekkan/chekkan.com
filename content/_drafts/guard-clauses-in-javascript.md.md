@@ -48,11 +48,14 @@ If a more granular control is requires, we could compose these functions togethe
 
 ```javascript
 function rating(score) {
-	const ensure = compose
-	assert.notNil("score", score) && assert.isNumber("score", score) && assert.isBetween(1, 100, "score", score);
+	const ensure = 
+	assert.notNil("score", score) && 
+	assert.isNumber("score", score) &&
+	assert.isBetween(1, 100, "score", score);
 	return Math.ceil(score / 20);
+}
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ3Njg0ODM2OSw4NDc3MjU5LC0yNjM5NT
-M0NjldfQ==
+eyJoaXN0b3J5IjpbLTE1MDI0MDk5MzYsODQ3NzI1OSwtMjYzOT
+UzNDY5XX0=
 -->
