@@ -50,12 +50,12 @@ If a more granular control is requires, we could compose these functions togethe
 function rating(score) {
 	const ensure = 
 	assert.notNil("score", score) && 
-	assert.isFinit("score", score) &&
+	assert.isFinite("score", score) &&
 	assert.isBetween(1, 100, "score", score);
 	return Math.ceil(score / 20);
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODU4ODQ3OTUxLC0xNTAyNDA5OTM2LDg0Nz
-cyNTksLTI2Mzk1MzQ2OV19
+eyJoaXN0b3J5IjpbMTA0NTk5NDI2MiwtMTUwMjQwOTkzNiw4ND
+c3MjU5LC0yNjM5NTM0NjldfQ==
 -->
