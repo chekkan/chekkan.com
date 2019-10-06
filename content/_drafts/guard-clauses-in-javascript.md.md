@@ -27,7 +27,7 @@ function rating(score) {
 }
 ```
 
-This is starting to look a lot like [defensive programming](https://en.wikipedia.org/wiki/Defensive_programming). It states that "a method should always validate its input". This is documented in the Reactoring book by Martin Fowler and he calls this refactoring "[Introduce Assertions](https://refactoring.com/catalog/introduceAssertion.html)". This seems a bit verbose and the lines of code has gone from 1 to 4.
+This is starting to look a lot like [defensive programming](https://en.wikipedia.org/wiki/Defensive_programming). It states that "a method should always validate its input". This is documented in the _Reactoring_ book by Martin Fowler and he calls this refactoring "[Introduce Assertions](https://refactoring.com/catalog/introduceAssertion.html)". This seems a bit verbose and the lines of code has gone from 1 to 4.
 
 ```javascript
 function rating(score) {
@@ -36,7 +36,7 @@ function rating(score) {
 }
 ```
 
-In this variantion, `assert.isBetween` function can handle the assertion of the score beign `undefined` or `null`, also ensuring the type beign a number and finally the acceptable range. 
+In this variantion, `assert.isBetween` function can handle the assertion of the score beign `undefined` or `null`, also ensuring the type beign a number and finally in the acceptable range. 
 
 ```javascript
 function isBetween(lower, upper, name, value) {
@@ -46,8 +46,9 @@ function isBetween(lower, upper, name, value) {
 }
 ```
 
+Conclusion
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzM1NTkyNjksMTA3MzUxODIzOSwtMT
-MzNTk1MzkwNiwtMTM4MTA2MzE2NSwxMDQ1OTk0MjYyLC0xNTAy
-NDA5OTM2LDg0NzcyNTksLTI2Mzk1MzQ2OV19
+eyJoaXN0b3J5IjpbNDEyNDM3MDc3LDEwNzM1MTgyMzksLTEzMz
+U5NTM5MDYsLTEzODEwNjMxNjUsMTA0NTk5NDI2MiwtMTUwMjQw
+OTkzNiw4NDc3MjU5LC0yNjM5NTM0NjldfQ==
 -->
