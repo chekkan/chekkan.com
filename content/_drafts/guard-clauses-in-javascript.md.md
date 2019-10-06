@@ -29,10 +29,13 @@ This is documented in the Reactoring book by Martin Fowler and he calls this ref
 
 ```javascript
 function rating(score) {
-assert.is
+	assert.isBetween(1, 100, "score");
+	return Math.ceil(score / 20);
 }
 ```
+
+In this variantion, `assert.isBetween` function can handle the assertion of the score beign `undefined` or nul
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc5MDQ5MDM4Niw4NDc3MjU5LC0yNjM5NT
+eyJoaXN0b3J5IjpbLTY5MTY1NDYxMiw4NDc3MjU5LC0yNjM5NT
 M0NjldfQ==
 -->
