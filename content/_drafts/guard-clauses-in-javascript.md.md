@@ -12,7 +12,7 @@ Although at first glance, this function looks simple, it has made a lot of assum
 
 What should the return value of this function be if the input `score` is a string? Should it return `NaN`? throw an exception? or return `-1`? 
 
-It may be that in the context where this function is beign used, it will never get into the erroneous state I've listed above. For example, `rating(toPercentage(score, 1, 10))`. Lets assume that `toPercentage` is returning a percentage given a score between `1` and `10`. So, in this context we can see that the function `rating` is actually beign used to covert a score from 1 to 10 to 1 to 5. Perhaps, `toPercentage` handles the case when the initial score variable is not a number between 1, to 10 (by capping the value), or the case when score is a string returning 0 etc. We don't know without looking in the source code of the function. the `toPercentage` function could even be provided by an `npm` package maintained by a different team, whom you don't trust to do the right thing. Who knows, they might start returning you percentage as a string in later versions. This has happened to me in a project where the score was returned by an API call and it went from being a `number` to being a `string`.
+It may be that in the context where this function is beign used, it will never get into the erroneous state I've listed above. For example, `rating(toPercentage(score, 1, 10))`. Lets assume that `toPercentage` is returning a percentage given a score between 1 and 10. So, in this context we can see that the function `rating` is actually beign used to covert a score from 1 to 10 to 1 to 5. Perhaps, `toPercentage` handles the case when the initial score variable is not a number between 1, to 10 (by capping the value), or the case when score is a string returning 0 etc. We don't know without looking in the source code of the function. The `toPercentage` function could even be provided by an `npm` package maintained by a different team, whom you don't trust to do the right thing. Who knows, they might start returning you percentage as a string in later versions. This has happened to me in a project where the score was returned by an API call and it went from being a `number` to being a `string`.
 
 How would you know if the `score` variable starts behaving differently to when you wrote the `rating` method? How can we catch this in production and make fixing it easier.
 
@@ -47,7 +47,7 @@ function isBetween(lower, upper, name, value) {
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA3MzUxODIzOSwtMTMzNTk1MzkwNiwtMT
-M4MTA2MzE2NSwxMDQ1OTk0MjYyLC0xNTAyNDA5OTM2LDg0Nzcy
-NTksLTI2Mzk1MzQ2OV19
+eyJoaXN0b3J5IjpbLTE4NzM1NTkyNjksMTA3MzUxODIzOSwtMT
+MzNTk1MzkwNiwtMTM4MTA2MzE2NSwxMDQ1OTk0MjYyLC0xNTAy
+NDA5OTM2LDg0NzcyNTksLTI2Mzk1MzQ2OV19
 -->
