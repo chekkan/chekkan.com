@@ -34,8 +34,16 @@ function rating(score) {
 }
 ```
 
-In this variantion, `assert.isBetween` function can handle the assertion of the score beign `undefined` or nul
+In this variantion, `assert.isBetween` function can handle the assertion of the score beign `undefined` or `null`, also ensuring the type beign a number and finally the acceptable range. 
+
+```javascript
+function isBetween(lower, upper, name) {
+	if (not(isNil)) {
+		console.assert(
+	}
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5MTY1NDYxMiw4NDc3MjU5LC0yNjM5NT
+eyJoaXN0b3J5IjpbMTcxNDkyMjczMiw4NDc3MjU5LC0yNjM5NT
 M0NjldfQ==
 -->
