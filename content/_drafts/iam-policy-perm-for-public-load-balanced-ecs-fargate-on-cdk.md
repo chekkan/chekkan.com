@@ -1,6 +1,14 @@
 ---
 title: iam-policy-perm-for-public-load-balanced-ecs-fargate-on-cdk.md
 date: "2020-02-03T12:02:00.000Z"
+tags:
+  - aws
+  - cdk
+  - iam
+  - ecs
+  - docker
+  - fargate
+  - cloudformation
 ---
 
 ## IAM policy permissions for a public load balanced ecs fargate service on AWS CDK
