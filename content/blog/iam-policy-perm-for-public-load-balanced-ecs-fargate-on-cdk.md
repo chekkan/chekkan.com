@@ -1,6 +1,6 @@
 ---
 title: iam-policy-perm-for-public-load-balanced-ecs-fargate-on-cdk.md
-date: "2020-02-03T12:02:00.000Z"
+date: "2020-02-03T16:20:00.000Z"
 tags:
   - aws
   - cdk
