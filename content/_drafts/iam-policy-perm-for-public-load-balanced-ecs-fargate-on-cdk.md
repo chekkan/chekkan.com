@@ -101,7 +101,9 @@ For A stack with an Application Load Balanced Fargate Service requires the follo
                 "route53:ChangeResourceRecordSets",
                 "route53:ListResourceRecordSets",
                 "route53:ListHostedZonesByName",
-                "ec2:DescribeSecurityGroups"
+                "ec2:DescribeSecurityGroups",
+                "ecs:RegisterTaskDefinition",
+                "ecs:DeregisterTaskDefinition"
             ],
             "Resource": "*"
         },
@@ -113,6 +115,12 @@ For A stack with an Application Load Balanced Fargate Service requires the follo
                 "arn:aws:elasticloadbalancing:*:{{accountId}}:listener/app/{{lbPrefix}}*/*/*",
                 "arn:aws:elasticloadbalancing:*:{{accountId}}:listener/net/{{lbPrefix}}*/*/*"
             ]
+        },
+        {
+            "Sid": "VisualEditor3",
+            "Effect": "Allow",
+            "Action": ["ecs:UpdateService", "ecs:DescribeServices"],
+            "Resource": "arn:aws:ecs:*:{{accountId}}:service/compliance-*/ComplianceApiStack-*"
         }
     ]
 }
