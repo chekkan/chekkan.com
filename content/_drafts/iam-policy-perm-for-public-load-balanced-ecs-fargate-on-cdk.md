@@ -7,6 +7,9 @@ date: "2020-02-03T12:02:00.000Z"
 
 Using AWS CDK with an admin user is all fine and straight forward. But, when it comes to creating a deployment pipeline with an IAM user specifically created with the actual permission needed, it can take a long time of trialing and failing to get to the final list of IAM policy statements.
 
+The following managed policies:
+- AWSCloudFormationReadOnlyAccess - arn:aws:iam::aws:policy/AWSCloudFormationReadOnlyAccess
+
 A stack with an Application Load Balanced Fargate Service requires the following IAM permissions as a minimum.
 
 ```json
@@ -17,25 +20,39 @@ A stack with an Application Load Balanced Fargate Service requires the following
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
+                "lambda:CreateFunction",
                 "ec2:AuthorizeSecurityGroupIngress",
-                "iam:UntagRole",
+                "elasticloadbalancing:ModifyListener",
                 "iam:ListRoleTags",
+                "iam:UntagRole",
                 "iam:TagRole",
                 "iam:CreateRole",
-                "iam:DeleteRole",
                 "iam:AttachRolePolicy",
+                "lambda:GetFunctionConfiguration",
                 "iam:PutRolePolicy",
                 "cloudformation:CreateChangeSet",
                 "cloudformation:DeleteChangeSet",
-                "ec2:RevokeSecurityGroupIngress",
+                "iam:PassRole",
                 "iam:DetachRolePolicy",
+                "iam:ListAttachedRolePolicies",
                 "iam:DeleteRolePolicy",
-                "cloudformation:ExecuteChangeSet"
+                "lambda:DeleteFunction",
+                "iam:ListRolePolicies",
+                "cloudformation:ExecuteChangeSet",
+                "iam:GetRole",
+                "lambda:InvokeFunction",
+                "lambda:GetFunction",
+                "iam:DeleteRole",
+                "ec2:RevokeSecurityGroupIngress",
+                "iam:GetRolePolicy"
             ],
             "Resource": [
-                "arn:aws:ec2:*:{{accountId}}:security-group/*",
-                "arn:aws:iam::{{accountId}}:role/{{stackPrefix}}*",
-                "arn:aws:cloudformation:*:{{accountId}}:stack/{{stackPrefix}}*/*"
+                "arn:aws:iam::712390586371:role/Compliance*",
+                "arn:aws:cloudformation:*:712390586371:stack/Compliance*/*",
+                "arn:aws:ec2:*:712390586371:security-group/*",
+                "arn:aws:elasticloadbalancing:*:712390586371:listener/app/Compl*/*/*",
+                "arn:aws:elasticloadbalancing:*:712390586371:listener/net/Compl*/*/*",
+                "arn:aws:lambda:*:712390586371:function:Compliance*"
             ]
         },
         {
@@ -43,13 +60,25 @@ A stack with an Application Load Balanced Fargate Service requires the following
             "Effect": "Allow",
             "Action": [
                 "elasticloadbalancing:DescribeLoadBalancers",
+                "route53:GetChange",
                 "ec2:DescribeAvailabilityZones",
                 "ec2:DescribeRegions",
                 "route53:GetHostedZone",
+                "route53:ChangeResourceRecordSets",
+                "route53:ListResourceRecordSets",
                 "route53:ListHostedZonesByName",
                 "ec2:DescribeSecurityGroups"
             ],
             "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": "elasticloadbalancing:ModifyListener",
+            "Resource": [
+                "arn:aws:elasticloadbalancing:*:712390586371:listener/app/Compl*/*/*",
+                "arn:aws:elasticloadbalancing:*:712390586371:listener/net/Compl*/*/*"
+            ]
         }
     ]
 }
