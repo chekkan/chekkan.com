@@ -7,10 +7,44 @@ date: "2020-02-03T12:02:00.000Z"
 
 Using AWS CDK with an admin user is all fine and straight forward. But, when it comes to creating a deployment pipeline with an IAM user specifically created with the actual permission needed, it can take a long time of trialing and failing to get to the final list of IAM policy statements.
 
-The following managed policies:
-- AWSCloudFormationReadOnlyAccess - `arn:aws:iam::aws:policy/AWSCloudFormationReadOnlyAccess`
+For A stack with an Application Load Balanced Fargate Service requires the following IAM permissions as a minimum.
 
-A stack with an Application Load Balanced Fargate Service requires the following IAM permissions as a minimum.
+### Give access to the cdk toolkit staging s3 bucket:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetAccessPoint",
+                "s3:PutAccountPublicAccessBlock",
+                "s3:GetAccountPublicAccessBlock",
+                "s3:ListAllMyBuckets",
+                "s3:ListAccessPoints",
+                "s3:ListJobs",
+                "s3:CreateJob",
+                "s3:HeadBucket"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": "arn:aws:s3:::cdktoolkit-stagingbucket-*"
+        }
+    ]
+}
+```
+
+### Managed policies
+- AWSCloudFormationReadOnlyAccess - `arn:aws:iam::aws:policy/AWSCloudFormationReadOnlyAccess`
+- AmazonVPCReadOnlyAccess - `arn:aws:iam::aws:policy/AmazonVPCReadOnlyAccess`
+
+### Remaining Custom Policies
 
 ```json
 {
