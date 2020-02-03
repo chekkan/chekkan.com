@@ -119,3 +119,45 @@ For A stack with an Application Load Balanced Fargate Service requires the follo
 ```
 
 Replace `{{accountId}}`, `{{stackPrefix}}` and `{{lbPrefix}}` with your values.
+
+### Push Docker image to Elastic Container Registy
+
+If you use build pipelines to push to docker image into ECR registry, you will need the following permission
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ManageRepositoryContents",
+            "Effect": "Allow",
+            "Action": [
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:GetRepositoryPolicy",
+                "ecr:DescribeRepositories",
+                "ecr:ListImages",
+                "ecr:DescribeImages",
+                "ecr:BatchGetImage",
+                "ecr:InitiateLayerUpload",
+                "ecr:UploadLayerPart",
+                "ecr:CompleteLayerUpload",
+                "ecr:PutImage"
+            ],
+            "Resource": "arn:aws:ecr:*:{{accountId}}:repository/{{repoName}}"
+        },
+        {
+            "Sid": "GetAuthorizationToken",
+            "Effect": "Allow",
+            "Action": [
+                "ecr:GetAuthorizationToken"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+Replace `{{accountId}}` and `{{repoName}}`with your values.
+
+## Summary
+I am not sure at present where the IAM permission for the user that deploys CDK should reside. It's a lot of configurations to just be hard coded and changed via the AWS Web console. Even though you can track up to 5 revisions. Perhaps we should be saving this as json files in source control and creating the user via **aws cli** tools. If you know a best practise, please do leave a comment.
