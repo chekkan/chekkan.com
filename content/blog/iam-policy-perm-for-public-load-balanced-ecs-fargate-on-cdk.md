@@ -112,24 +112,27 @@ For A stack with an Application Load Balanced Fargate Service requires the follo
         "route53:ListHostedZonesByName",
         "ec2:DescribeSecurityGroups",
         "ecs:RegisterTaskDefinition",
-        "ecs:DeregisterTaskDefinition"
+        "ecs:DeregisterTaskDefinition",
+        "logs:CreateLogGroup",
+        "ec2:CreateSecurityGroup"
       ],
       "Resource": "*"
     },
     {
       "Sid": "VisualEditor2",
       "Effect": "Allow",
-      "Action": "elasticloadbalancing:ModifyListener",
+      "Action": ["elasticloadbalancing:ModifyListener", "elasticloadbalancing:CreateTargetGroup"],
       "Resource": [
         "arn:aws:elasticloadbalancing:*:{{accountId}}:listener/app/{{lbPrefix}}*/*/*",
-        "arn:aws:elasticloadbalancing:*:{{accountId}}:listener/net/{{lbPrefix}}*/*/*"
+        "arn:aws:elasticloadbalancing:*:{{accountId}}:listener/net/{{lbPrefix}}*/*/*",
+        "arn:aws:elasticloadbalancing:*:712390586371:targetgroup/*/*"
       ]
     },
     {
       "Sid": "VisualEditor3",
       "Effect": "Allow",
       "Action": ["ecs:UpdateService", "ecs:DescribeServices"],
-      "Resource": "arn:aws:ecs:*:{{accountId}}:service/compliance-*/{{stackPrefix}}-*"
+      "Resource": "arn:aws:ecs:*:{{accountId}}:service/{{namePrefix}}-*/{{stackPrefix}}-*"
     }
   ]
 }
