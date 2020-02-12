@@ -95,7 +95,7 @@ For A stack with an Application Load Balanced Fargate Service requires the follo
         "arn:aws:ec2:*:{{accountId}}:security-group/*",
         "arn:aws:elasticloadbalancing:*:{{accountId}}:listener/app/{{lbPrefix}}*/*/*",
         "arn:aws:elasticloadbalancing:*:{{accountId}}:listener/net/{{lbPrefix}}*/*/*",
-        "arn:aws:lambda:*:{{accountId}}:function:Compliance*"
+        "arn:aws:lambda:*:{{accountId}}:function:{{stackPrefix}}*"
       ]
     },
     {
@@ -129,7 +129,7 @@ For A stack with an Application Load Balanced Fargate Service requires the follo
       "Sid": "VisualEditor3",
       "Effect": "Allow",
       "Action": ["ecs:UpdateService", "ecs:DescribeServices"],
-      "Resource": "arn:aws:ecs:*:{{accountId}}:service/compliance-*/ComplianceApiStack-*"
+      "Resource": "arn:aws:ecs:*:{{accountId}}:service/compliance-*/{{stackPrefix}}-*"
     }
   ]
 }
