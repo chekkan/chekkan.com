@@ -11,8 +11,6 @@ tags:
   - cloudformation
 ---
 
-## IAM policy permissions for a public load balanced ecs fargate service on AWS CDK
-
 Using AWS CDK with an admin user is all fine and straight forward. But, when it comes to creating a deployment pipeline with an IAM user specifically created with the actual permission needed, it can take a long time of trialing and failing to get to the final list of IAM policy statements.
 
 For A stack with an Application Load Balanced Fargate Service requires the following IAM permissions as a minimum.
