@@ -65,7 +65,7 @@ spec:
 
 Let's save these two configurations into a file called `elasticsearch_deployment.yaml` and `elasticsearch_service.yaml` respectively into a folder called `elasticsearch-k8s`.
 
-```
+```shell
 elasticsearch-k8s
 ├── elasticsearch_deployment.yaml
 └── elasticsearch_service.yaml
@@ -73,20 +73,20 @@ elasticsearch-k8s
 
 Let's delete the elasticsearch deployment and service that was created before:
 
-```Shell
+```shell
 kubectl delete deployment elasticsearch
 kubectl delete service elasticsearch
 ```
 
 To create the resources from the configuration files, run the command from the `elasticsearch-k8s` folder:
 
-```Shell
+```shell
 kubectl create -f .
 ```
 
 Outputs:
 
-```
+```shell
 deployment "elasticsearch" created
 service "elasticsearch" created
 ```

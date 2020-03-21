@@ -36,7 +36,7 @@ This error is because you do not have an App Management Service created and or t
 
 From cmd.exe, enter these commands:
 
-```
+```shell
 dnscmd.exe . /ZoneAdd ContosoApps.com /dsprimary
 dnscmd.exe . /RecordAdd contosoapps.com * CNAME contoso.com
 ```

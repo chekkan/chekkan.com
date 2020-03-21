@@ -18,7 +18,7 @@ This is a continuation of the previous blog post.
 
 Let's try to setup kibana pointing to our elasticsearch single node cluster.
 
-```
+```shell
 kubectl run kibana --image=docker.elastic.co/kibana/kibana:6.2.1 --env="ELASTICSEARCH_URL=http://elasticsearch:9200" --env="XPACK_SECURITY_ENABLED=true" --port=5601
 ```
 
@@ -26,13 +26,13 @@ kubectl run kibana --image=docker.elastic.co/kibana/kibana:6.2.1 --env="ELASTICS
 
 You can see both elasticsearch deployment and kibana with the following command:
 
-```
+```shell
 kubectl get deployments
 ```
 
 Outputs:
 
-```
+```shell
 NAME            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 elasticsearch   1         1         1            1           22m
 kibana          1         1         1            0           2m
@@ -41,13 +41,13 @@ kibana          1         1         1            0           2m
 **Pro tip**
 You can keep watching the progress of your pod creation using the command:
 
-```
+```shell
 kubectl get pods -w -l run=kibana
 ```
 
 If the creation of the pod takes too long, might be to do with the network connection. For me, I had to wait 52 minutes for the image to be pulled down.
 
-```
+```shell
 kubectl describe pod kibana-556b7764c7-lb4mm
 ...
 Events:
@@ -63,7 +63,7 @@ Events:
 
 Let's expose the kibana deployment as a service:
 
-```Shell
+```shell
 kubectl expose deployment kibana --type=LoadBalancer
 ```
 

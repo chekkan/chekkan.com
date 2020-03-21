@@ -10,7 +10,7 @@ tags:
   - fargate
   - ecs
   - continuous-delivery
-  - entityframework
+  - entity-framework
 ---
 
 This article is insipired by the blog post [Elegant Database Migrations on ECS](https://engineering.instawork.com/elegant-database-migrations-on-ecs-74f3487da99f) from [Adam Stepinski](https://engineering.instawork.com/@adamstep). The original article guides you through setting up an application thats setup with Django Framework. I am going to presribe a method with the following technologies:
@@ -21,13 +21,13 @@ This article is insipired by the blog post [Elegant Database Migrations on ECS](
 
 ## Database Migration Health Check
 
-Let's first tackle the Migration Health check endpoint which I think is a good idea anyway even if you don't follow the rest of the article. 
+Let's first tackle the Migration Health check endpoint which I think is a good idea anyway even if you don't follow the rest of the article.
 
-With the ECS Rollout Deployment strategy, a single task is started at a time by ECS. It is added to the Application Load balancer target group. ECS then waits for the Health Check endpoint to return a health status code for a set number of time before considering the task to be stable. Then continues the process till the desired number of tasks are launched. Removing the previous version of tasks from the target group as new tasks are registered. 
+With the ECS Rollout Deployment strategy, a single task is started at a time by ECS. It is added to the Application Load balancer target group. ECS then waits for the Health Check endpoint to return a health status code for a set number of time before considering the task to be stable. Then continues the process till the desired number of tasks are launched. Removing the previous version of tasks from the target group as new tasks are registered.
 
 With that being said, lets see some code for implementing the said health check.
 
-```cs
+```csharp
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -66,7 +66,7 @@ The code should be fairly easy to follow. Read more about aspnet core Health Che
 
 Register `DbPendingMigrationHealthCheck` class in `Startup`.
 
-```cs
+```csharp
 namespace WebApi
 {
 	public class Startup
@@ -75,7 +75,7 @@ namespace WebApi
 		{
 		    Configuration = configuration;
 		}
-			
+
 		public IConfiguration Configuration { get; }
 		public void ConfigureServices(IServiceCollection services)
 		{
@@ -96,14 +96,16 @@ namespace WebApi
 		        });
 		}
 	}
-}	
+}
 ```
 
 With those changes in place, you will see the message "Healthy" or "Unhealthy" response body with `200` status code when calling `GET "/"` endpoint.
 
+---
+
 ## Database Migration
 
-Here is where I took a different approach to the method mentioned in the original post. Instead of invoking the task as part of the build step, I am going use the ECS Container Dependency in order to run the database migration. 
+Here is where I took a different approach to the method mentioned in the original post. Instead of invoking the task as part of the build step, I am going use the ECS Container Dependency in order to run the database migration.
 
 In order to do this, I had to create a new _Dockerfile_ with `dotnet ef` global tool installed. The _Dockerfile_ looks like this:
 
@@ -132,7 +134,7 @@ CMD ["dotnet", "ef", "--project", "../Persistence", "database", "update"]
 
 With CDK project, a container's dependency can be defined as following in service task definition.
 
-```cs
+```csharp
 var imageTag = (string) scope.Node.TryGetContext("imageTag");
 
 var taskDef = new FargateTaskDefinition(this, "example-api", new FargateTaskDefinitionProps
@@ -169,7 +171,7 @@ ContainerDefinition dbMigrationContainerDef = taskDef.AddContainer("db-migration
 # API container depends on db migration container completing succefully
 apiContainerDef.AddContainerDependencies(new ContainerDependency
     {Container = dbMigrationContainerDef, Condition = ContainerDependencyCondition.SUCCESS});
-    
+
 return new ApplicationLoadBalancedFargateService(this, "ExampleApiService",
     new ApplicationLoadBalancedFargateServiceProps
     {
@@ -187,8 +189,10 @@ return new ApplicationLoadBalancedFargateService(this, "ExampleApiService",
 
 That's all there is to it. Now you can include the step `cdk deploy` and your database will be migrated before the API task runs. If migration fails for some reason, the deployment will fail.
 
+---
+
 ## Conclusion
 
-This has been a blog post with a lot of code samples, and I hope that hasn't put people off from realising the benefits. If you've not already done so, please read through the [original article](https://engineering.instawork.com/elegant-database-migrations-on-ecs-74f3487da99f) to get a more detailed explanation on benefits and other options that could've been considered. 
+This has been a blog post with a lot of code samples, and I hope that hasn't put people off from realising the benefits. If you've not already done so, please read through the [original article](https://engineering.instawork.com/elegant-database-migrations-on-ecs-74f3487da99f) to get a more detailed explanation on benefits and other options that could've been considered.
 
 I am not sure how we would go about rolling back the database changes if the deployment doesn't go smoothly. If you've already got strategy in place so that rollbacks won't require database rollback. Then that's great. In this post, I've mainly focused on using the `dotnet ef` global tool. However, there maybe much better alternatives out there.

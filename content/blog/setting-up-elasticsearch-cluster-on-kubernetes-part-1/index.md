@@ -32,25 +32,25 @@ Once you've got the tools all installed, you can now follow along these steps to
 
 If you are using Minikube, make sure that its started properly by running this command (for mac):
 
-```Shell
+```shell
 minikube start --vm-driver=hyperkit
 ```
 
 Now set the Minikube context. The context is what determines which cluster kubectl is interacting with.
 
-```Shell
+```shell
 kubectl config use-context minikube
 ```
 
 Verify that kubectl is configured to communicate with your cluster:
 
-```Shell
+```shell
 kubectl cluster-info
 ```
 
 To view the nodes in the cluster, run:
 
-```Shell
+```shell
 kubectl get nodes
 ```
 
@@ -58,13 +58,13 @@ kubectl get nodes
 
 Minikube includes the kubernetes dashboard as an addon which you can enable.
 
-```
+```shell
 minikube addons list
 ```
 
 returns
 
-```
+```shell
 - default-storageclass: enabled
 - coredns: disabled
 - kube-dns: enabled
@@ -80,13 +80,13 @@ returns
 
 You can enable an addon using:
 
-```
+```shell
 minikube addons enable dashboard
 ```
 
 You can then open the dashboard with command
 
-```
+```shell
 minikube addons open dashboard
 ```
 
@@ -150,6 +150,7 @@ Now, back in the other window, lets execute a `curl` command to get the response
 ```Shell
 curl http://localhost:8001/api/v1/proxy/namespaces/default/pods/$POD_NAME/
 ```
+
 > **Update - 18 Feb 2019**: In later version of kubernetes, the proxy url is at `http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/`
 
 Outputs:
