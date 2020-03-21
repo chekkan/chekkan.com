@@ -17,7 +17,7 @@ I am using Excel 2013 and has got PowerPivot add on. Adding an OData feed which 
 
 After searching for hours and doing some hacking (decompiling Microsoft.Data.DataFeedClient.dll), I came up with a connection string that did the trick.
 
-```
+```shell
 Data Provider=Microsoft.Data.DataFeedClient;Data Source=http://localhost:51584/api/;Include Atom Elements=Auto;Include Expanded Entities=False;Integrated Security=OAuth;User ID=asdsadsa;Password=asdadsad;Persist Security Info=False;Time Out=600;Schema Sample Size=25;Retry Count=5;Retry Sleep=100;Keep Alive=False;Scope=List.Read;Refresh Token={refresh_token};Client ID={client_id};Refresh URL=http://localhost:51584/api/oauth;Client Secret={client_secret};Max Received Message Size=4398046511104;Service Document Url=http://localhost:51584/api/3/; Authentication Token=Basic 2323jkj
 ```
 
@@ -25,7 +25,7 @@ Data Provider=Microsoft.Data.DataFeedClient;Data Source=http://localhost:51584/a
 
 You can see in the connection string that I am setting the `Integrated Security=OAuth`. This, allows excel to retry the OData feed URL when the first try returns a `401` Status Code.
 
-```
+```shell
 Request
 --------
 GET api HTTP/1.1
@@ -46,7 +46,7 @@ I did not get further by using the Power Pivot -> Add Data Feed option. However,
 
 If an `Authentication Token` value is provided, excel retries the data source with `Authentication Token` added into the HTTP Header `WWW-Authenticate`. If the `Authentication Token` is null or empty, `DataFeedClient` tries to retrieve an access token by posting a request to `Refresh URL` together with the `Refresh Token`.
 
-```
+```shell
 POST /api/oauth HTTP/1.1
 User-Agent: PowerPivot
 Content-Type: application/x-www-form-urlencoded
@@ -58,7 +58,7 @@ grant_type=refresh_token&refresh_token={refresh_token}&scope={scope}&client_id={
 
 The response to this request for refresh token should return back an `access_token`. Which is then used by excel to make a successful connection to the OData feed.
 
-```
+```shell
 GET /api HTTP/1.1
 User-Agent: PowerPivot
 WWW-Authenticate: Bearer asdasdasda:

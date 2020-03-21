@@ -17,7 +17,7 @@ I searched for mocha in nuget package manager and only found one package called 
 
 After searching for an hour on the web to get the javascript files for mocha, chai, sinon, and sinon-chai, i managed to find downloadable javascript files for mocha from [here](http://https://github.com/visionmedia/mocha/releases), sinon from [here](http://sinonjs.org/), chai.js file from [here](http://chaijs.com/chai.js), and sinon-chai can be downloaded from [here](https://github.com/domenic/sinon-chai/releases). All the site recommend using `npm` to download the libraries and I agree with them. It is easy to do, and you can also get the latest version each time or target a specific version. But, it requires you to have nodejs and npm installed on your computer. Node.js can be installed on your machine from [here](http://nodejs.org/). Install node package manager (npm) using guidelines from [here](http://howtonode.org/introduction-to-npm). executing this line of code from command prompt should install it for you.
 
-```
+```shell
 curl http://npmjs.org/install.sh | sh
 ```
 

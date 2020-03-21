@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "disqus-react": "^1.0.6",
-    "gatsby": "^2.13.41",
+    "gatsby": "2.19.45",
     "gatsby-image": "^2.2.7",
     "gatsby-plugin-feed": "^2.3.5",
     "gatsby-plugin-google-analytics": "^2.1.4",
@@ -27,8 +27,8 @@
     "gatsby-transformer-remark": "^2.6.9",
     "gatsby-transformer-sharp": "^2.2.4",
     "prismjs": "^1.17.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
     "typeface-merriweather": "0.0.72",
@@ -49,8 +49,10 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
+    "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   }
 }
