@@ -14,6 +14,7 @@ tags:
 In order to access response headers such as `Location` in HTTP Fetch api whilst using Serverless Framework and AWS Lambda Functions with CORS enabled, you need to do the following.
 
 1. Make sure `cors` is set to `true` on `serverless.yml`
+
    ```yaml
    postUsers:
      handler: handler.postUsers
@@ -23,32 +24,33 @@ In order to access response headers such as `Location` in HTTP Fetch api whilst 
          method: post
          cors: true
    ```
-   
+
 1. Make sure in the response header, you are returning the following:
    ```javascript
    callback(null, {
-       statusCode: 201,
-       headers: {
-           'Access-Control-Allow-Origin': '*',
-           // Required for cookies, authorization headers with HTTPS
-           'access-control-allow-credentials': true,
-           'access-control-allow-headers': 'Location',
-           'access-control-expose-headers': 'Location',
-           Location: id
-       }
-   })
+     statusCode: 201,
+     headers: {
+       "Access-Control-Allow-Origin": "*",
+       // Required for cookies, authorization headers with HTTPS
+       "access-control-allow-credentials": true,
+       "access-control-allow-headers": "Location",
+       "access-control-expose-headers": "Location",
+       Location: id
+     }
+   });
    ```
 
 Now, you can access the header `location` from `fetch`.
 
 ```javascript
-this.httpClient.fetch("/users", {
+this.httpClient
+  .fetch("/users", {
     method: "post",
-    body: json({ username: "chekkan" }),
-})
-.then((res) => {
-    return res.headers.get("location")
-})
+    body: json({ username: "chekkan" })
+  })
+  .then(res => {
+    return res.headers.get("location");
+  });
 ```
 
 **References:**

@@ -11,12 +11,12 @@ I have been working on a SharePoint provider hosted app. In this project, we hav
 This blog is about my attempt at creating a build system which for now will run every night if there was any check ins since the last run of the build.
 I want the build to do a number of things.
 
-1.      Build the solution
-1.      Run some unit tests
-1.      Install the SharePoint Provider Hosted App on to an office 365 dev site collection
-1.      Upload the azure website
-1.      Upload the web jobs
-1.      Update the backing code first entity framework databases.
+1.       Build the solution
+1.       Run some unit tests
+1.       Install the SharePoint Provider Hosted App on to an office 365 dev site collection
+1.       Upload the azure website
+1.       Upload the web jobs
+1.       Update the backing code first entity framework databases.
 
 A lot of requirements I know. Hopefully you might have a similar requirement. I am not going to try and explain all the little details because so many people have already blogged about this. These blogs helped me to come up with a build process which helped me to meet my requirement. I will be referencing these blog post here. But, I had to make my own tweaks to meet my need which I will mention in this blog.
 

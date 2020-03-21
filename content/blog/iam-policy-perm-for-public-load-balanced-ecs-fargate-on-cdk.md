@@ -119,7 +119,10 @@ For A stack with an Application Load Balanced Fargate Service requires the follo
     {
       "Sid": "VisualEditor2",
       "Effect": "Allow",
-      "Action": ["elasticloadbalancing:ModifyListener", "elasticloadbalancing:CreateTargetGroup"],
+      "Action": [
+        "elasticloadbalancing:ModifyListener",
+        "elasticloadbalancing:CreateTargetGroup"
+      ],
       "Resource": [
         "arn:aws:elasticloadbalancing:*:{{accountId}}:listener/app/{{lbPrefix}}*/*/*",
         "arn:aws:elasticloadbalancing:*:{{accountId}}:listener/net/{{lbPrefix}}*/*/*",
