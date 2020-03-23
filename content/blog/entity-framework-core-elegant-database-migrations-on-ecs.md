@@ -139,7 +139,8 @@ var imageTag = (string) scope.Node.TryGetContext("imageTag");
 
 var taskDef = new FargateTaskDefinition(this, "example-api", new FargateTaskDefinitionProps
 {
-    ExecutionRole = executionRole
+    MemoryLimitMiB = 1024,
+    Cpu = 512
 });
 
 # This is the actual api container definition
@@ -152,7 +153,8 @@ ContainerDefinition apiContainerDef = taskDef.AddContainer("api", new ContainerD
     },
     Image = ContainerImage.FromEcrRepository(
         Repository.FromRepositoryName(this, "repo", "example/api"), imageTag),
-    Essential = true
+    Essential = true,
+    Logging = LogDriver.AwsLogs(new AwsLogDriverProps {StreamPrefix = "api"})
 });
 
 # This is the container defintion with dotnet ef command defined
@@ -164,13 +166,15 @@ ContainerDefinition dbMigrationContainerDef = taskDef.AddContainer("db-migration
         	{"ConnectionStrings__WebApi", _connectionString}
         },
         Image = ContainerImage.FromEcrRepository(
-            Repository.FromRepositoryName(this, "repo", "example/db-migration"), imageTag),
-        Essential = false
+            Repository.FromRepositoryName(this, "migrationRepo", "example/db-migration"), imageTag),
+        Essential = false,
+	Logging = LogDriver.AwsLogs(new AwsLogDriverProps {StreamPrefix = "migration"})
     });
 
 # API container depends on db migration container completing succefully
 apiContainerDef.AddContainerDependencies(new ContainerDependency
     {Container = dbMigrationContainerDef, Condition = ContainerDependencyCondition.SUCCESS});
+apiContainerDef.AddPortMappings(new PortMapping {ContainerPort = 80});
 
 return new ApplicationLoadBalancedFargateService(this, "ExampleApiService",
     new ApplicationLoadBalancedFargateServiceProps
