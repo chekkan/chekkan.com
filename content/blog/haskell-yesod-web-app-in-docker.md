@@ -8,13 +8,12 @@ tags:
   - docker
 ---
 
-## Prerequisites
-1. Docker
-1. [Haskell Stack](http://haskellstack.org/) version 2.3.1
-
-### Yesod
 [Yesod](https://www.yesodweb.com/) is one of the [web frameworks available for Haskell](https://wiki.haskell.org/Web/Frameworks). 
 It seems to be the easiest one out of the multiple choices available to get started with. 
+
+### Prerequisites
+1. Docker
+1. [Haskell Stack](http://haskellstack.org/) version 2.3.1
 
 You can find all yesod stack templates available from the [github repository](https://github.com/yesodweb/stack-templates).
 At the time of writing, the available stack yesod templates are:
