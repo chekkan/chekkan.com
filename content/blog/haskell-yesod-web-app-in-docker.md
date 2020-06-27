@@ -51,7 +51,7 @@ It scaffolds the following files...
 This Dockerfile was greatly influenced by the blog post [Optimized Docker builds for Haskell Stack](https://medium.com/permutive/optimized-docker-builds-for-haskell-76a9808eb10b) 
 by [Time Spence](https://medium.com/@timothywspence). Create a Dockerfile at the root of the director with the following content:
 
-```yaml
+```Dockerfile
 FROM fpco/stack-build:lts-16.0 as dependencies
 RUN mkdir /opt/build
 WORKDIR /opt/build
