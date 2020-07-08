@@ -9,7 +9,7 @@ tags:
     - github
 ---
 
-In a [previous post](/haskell-yesod-web-app-in-docker), I went over creating a Dockerfile for Haskell Yesod application. In this post, I will reuse part of the Dockerfile we ended up with and modify it so that we can build the docker image with GitHub Workflows. 
+In a [previous post](/haskell-yesod-web-app-in-docker), I went over creating a Dockerfile for Haskell [Yesod application](https://www.yesodweb.com/). In this post, I will reuse part of the Dockerfile we ended up with and modify it so that we can build the docker image with GitHub Workflows. 
 
 ### GitHub Workflow And Actions
 
@@ -32,7 +32,7 @@ jobs:
     - uses: actions/checkout@v2
 ```
 
-With just these content, With each push or pull-request to `master` branch will trigger the CI to run. I have also specified `ubuntu-18.04` here as we will build our application in the CI environment which will be packaged up in the Dockerfile. The Dockerfile will also be based on `ubuntu-18.04`. The first step in the workflow is to checkout the repository. For this we will be using the `checkout` action `@v2` denotes the version of the particular action.
+With just these content, each push or pull-request to `master` branch will trigger the CI to run. I have also specified `ubuntu-18.04` here as we will build our application in the CI environment, the build artifacts will then be packaged up in the docker image. The Dockerfile will also be based on `ubuntu-18.04`. The first step in the workflow is to checkout the repository. For this, we will be using the `checkout` action. `@v2` denotes the version of the particular action.
 
 ### Haskell Environment
 
@@ -46,11 +46,11 @@ With just these content, With each push or pull-request to `master` branch will 
         stack-version: 'latest'
 ```
 
-[setup-haskell action](https://github.com/actions/setup-haskell) allows you to configure a virtual environment with haskell ghc, optionally stack and cabal. The above configuration sets up the appropriate ghc and latest stack. I have chosen to go with ghc version `8.8` which is the supported ghc version in my stack resolver `lts-16.0`.
+[setup-haskell action](https://github.com/actions/setup-haskell) allows you to configure a virtual environment with haskell `ghc`, optionally `stack` and `cabal`. The above configuration sets up the appropriate `ghc` and latest `stack`. I have chosen to go with ghc version `8.8` which is the supported ghc version in my stack resolver `lts-16.0`.
 
 ### Cache
 
-With just these steps, the builds take too long to run. For me, it was _16 - 18 minutes_ to finish a successful build. In his book _Extreme Programming Explained, Kent Beck_ talks about _10 minute_ builds. The time was taken mostly because with each workflow instantiation, GitHub spins up a clean virtual environment. And the `stack build` command will have to rebuild all the binaries from source again. This is not the case in C# projects where the packages from NuGet are already compiled dlls. The build step would only involve just compiling your application code.
+Even with the minimal yesod application, the builds take too long to run. For me, it was _16 - 18 minutes_ to finish a successful build. In his book [_Extreme Programming Explained](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained), Kent Beck_ talks about _10 minute_ builds. The time was taken mostly because with each workflow instantiation, GitHub spins up a clean virtual environment. And the `stack build` command will have to rebuild all the binaries from source again. This is not the case in C# projects where the packages from NuGet are already compiled dlls. The build step would only involve just compiling your application code.
 
 When developing locally, the builds do not take this long because `stack` reuses build binaries from previous runs. We'll have to make use of GitHub's Cache action to recreate this behaviour.
 
@@ -90,13 +90,13 @@ However, the [readme file at hlint repository](https://github.com/ndmitchell/hli
     - name: Run hlint
       run: curl -sSL https://raw.github.com/ndmitchell/hlint/master/misc/run.sh | sh -s .
 
-    - name: Run Unit Tests
+    - name: Run Tests
       run: stack test --system-ghc
 ```
 
 ### Build Artifact
 
-In this example, the build artefact I want to produce is a docker image. In the [previous post](/haskell-yesod-web-app-in-docker) we ended up with a Dockerfile which I modified.
+In this example, the build artifact I want to produce is a docker image. In the [previous post](/haskell-yesod-web-app-in-docker) we ended up with a Dockerfile; which I've modified quite alot.
 
 ```dockerfile
 FROM ubuntu:18.04 as app
@@ -115,7 +115,7 @@ CMD ["/opt/app/xxxx"] # replace xxxx with your app binary filename
 You will notice that the Dockerfile is considerably shorter. Also notice that the base image is the same as the CI environment. We are also copying the contents of `./dist/bin` into the container as well.
 
 ```yaml
-  - name: Run Unit Tests
+  - name: Run Tests
       ...
 
     - name: Copy over binary
@@ -140,6 +140,6 @@ Finally, we use the docker [build-push action](https://github.com/marketplace/ac
 
 ### Summary
 
-Normally, when I build a C# project, I include the build step both in the CI and the Dockerfile because the step itself finishes with a minute or two. However, I didn't this about using the same binaries that were created in the CI pipeline inside the Docker image. The process of reducing the time taken for the build to run has made me re-evaluate this. The same binary that we ran the test against is now the docker image which will be in all the different environments. I can't think of any other optimisation I can do to improve the build time at this time. If I do, I'll make sure to update this post with further updates.
+Normally, when I build a C# project, I include the build step both in the CI and the Dockerfile because the step itself finishes within a minute or two. However, I didn't think about using the same binaries that were created in the CI pipeline inside the Docker image. The process of reducing the time taken for the build to run has made me re-evaluate my previous approach. The same binary that we ran the tests against is now the docker image which will be in all the different environments. I can't think of any other optimisations to improve the build time at this time. If I do in the future, I'll make sure to update this post with further updates.
 
 For a much more complicated project setup with Cabal, have a look at [github/semantic](https://github.com/github/semantic/blob/master/.github/workflows/haskell.yml) repository
