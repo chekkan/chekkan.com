@@ -50,14 +50,29 @@ spec:
             - name: database__client
               value: mysql
             - name: database__connection__host
-              value: 159.65.83.50
+              valueFrom:
+                secretKeyRef:
+                  name: chekkan-db-secret
+                  key: host
             - name: database__connection__port
-              value: "3306"
+              valueFrom:
+                secretKeyRef:
+                  name: chekkan-db-secret
+                  key: port
             - name: database__connection__user
-              value: chekkan-web-sa
+              valueFrom:
+                secretKeyRef:
+                  name: chekkan-db-secret
+                  key: username
             - name: database__connection__password
-              value: "*******"
+              valueFrom:
+                secretKeyRef:
+                  name: chekkan-db-secret
+                  key: password
             - name: database__connection__database
-              value: chekkan_ghost
+              valueFrom:
+                secretKeyRef:
+                  name: chekkan-db-secret
+                  key: database
             - name: database__connection__ssl
               value: "true"
