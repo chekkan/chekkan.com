@@ -47,3 +47,17 @@ spec:
             #   # see https://docs.ghost.org/docs/config#section-running-ghost-with-config-env-variables
             - name: url
               value: https://chekkan.editcafe.net
+            - name: database__client
+              value: mysql
+            - name: database__connection__host
+              value: 159.65.83.50
+            - name: database__connection__port
+              value: "3306"
+            - name: database__connection__user
+              value: chekkan-web-sa
+            - name: database__connection__password
+              value: "*******"
+            - name: database__connection__database
+              value: chekkan_ghost
+            - name: database__connection__ssl
+              value: "true"
