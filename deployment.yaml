@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
         - name: ghost
-          image: ghost:3.35.5-alpine
+          image: chekkan/ghost-cloudinary@sha256:0b7116027cfc18cc865bce82703ea3ff67fcc81296a4fbe89eda246539311449
           ports:
             - containerPort: 2368
               protocol: TCP
@@ -47,6 +47,11 @@ spec:
             #   # see https://docs.ghost.org/docs/config#section-running-ghost-with-config-env-variables
             - name: url
               value: https://chekkan.editcafe.net
+            - name: CLOUDINARY_URL
+              valueFrom:
+                secretKeyRef:
+                  name: chekkan-db-secret
+                  key: cloudinaryUrl
             - name: database__client
               value: mysql
             - name: database__connection__host
