@@ -7,7 +7,7 @@ metadata:
     service.beta.kubernetes.io/do-loadbalancer-protocol: "http"
     service.beta.kubernetes.io/do-loadbalancer-algorithm: "round_robin"
     service.beta.kubernetes.io/do-loadbalancer-tls-ports: "443"
-    service.beta.kubernetes.io/do-loadbalancer-certificate-id: "7dc1d3c00-ffc5-4758-a69f-bcb71b4a4fa9"
+    service.beta.kubernetes.io/do-loadbalancer-certificate-id: "41401385-b1f8-4b19-91ab-6358191ba0d7"
     service.beta.kubernetes.io/do-loadbalancer-redirect-http-to-https: "true"
 spec:
   type: LoadBalancer
@@ -46,7 +46,7 @@ spec:
           env:
             #   # see https://docs.ghost.org/docs/config#section-running-ghost-with-config-env-variables
             - name: url
-              value: https://chekkan.editcafe.net
+              value: https://chekkan.com
             - name: CLOUDINARY_URL
               valueFrom:
                 secretKeyRef:
@@ -81,3 +81,21 @@ spec:
                   key: database
             - name: database__connection__ssl
               value: "true"
+            - name: mail__transport
+              value: SMTP
+            - name: mail__options__service
+              value: Mailgun
+            - name: mail__options__host
+              value: smtp.mailgun.org
+            - name: mail__options__port
+              value: "587"
+            - name: mail__options__auth__user
+              valueFrom:
+                secretKeyRef:
+                  name: chekkan-db-secret
+                  key: smtpUser
+            - name: mail__options__auth__pass
+              valueFrom:
+                secretKeyRef:
+                  name: chekkan-db-secret
+                  key: smtpPassword
