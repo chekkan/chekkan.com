@@ -39,7 +39,7 @@ spec:
     spec:
       containers:
         - name: ghost
-          image: chekkan/ghost-cloudinary@sha256:582046d199387c5298f510b858d506ee113d58cd5b16e7d5d956fbd6bee143b3
+          image: chekkan/ghost-cloudinary@sha256:abd743751f2b6f6c3e7091b7968332df9a14751bd3091d6b12ab245d9f0453c3
           ports:
             - containerPort: 2368
               protocol: TCP
